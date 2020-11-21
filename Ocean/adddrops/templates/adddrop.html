@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+          <h1>Add a Water Drop</h1>
+          {% if user.is_authenticated %}
+          <div class="container">
+                  <div class='account-form'>
+          <form action = "{% url 'adddrops:adddrop' %}" method="POST">
+            {% csrf_token %}
+            {{ form }}
+              <div class="input-box">
+                  <div class="form-group">
+                      <input type="text" name="Title" class="form-control" placeholder="Title" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" name="Location" class="form-control" placeholder="Location" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" name="Caption" class="form-control" placeholder="Caption" required>
+                  </div>
+  
+                  <button type="submit" class="btn btn-success">Add the Drop </button>
+                  
+              </div>
+          </form>
+      </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %} 
